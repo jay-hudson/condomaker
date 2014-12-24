@@ -3,7 +3,7 @@
 	{
 		var directive = {};
 		directive.replace= true;
-		directive.templateUrl = 'assets/components/topnav.html';
+		directive.templateUrl = 'components/topnav.html';
 		directive.restrict = 'E'; 
 		return directive;
 	}

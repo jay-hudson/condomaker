@@ -1,3 +1,10 @@
+require 'haml'
+path = "#{Rails.root}/app/assets/javascripts/components/topnav.html.haml"
+template = File.open(path, 'rb') { |f| f.read }
+
+haml_engine = Haml::Engine.new(template)
+farty = haml_engine.render
+
 Rails.application.routes.draw do
 
   namespace :api do
@@ -7,6 +14,10 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+
+  match 'components/topnav.html', to: lambda {|hash| [200, {}, [farty]] }, via: :get
+
+  print "fuckfuck"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
